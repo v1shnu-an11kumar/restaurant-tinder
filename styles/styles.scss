@@ -1,278 +1,3 @@
-// /* Variables for colors */
-// $background-color: #FFF7E8; /* Pastel cream */
-// $card-default-color: #FFDEE9; /* Light pink */
-// $card-hover-color: #D6A4FF; /* Light purple */
-// $card-click-color: #AEC6CF; /* Light blue for click */
-// $card-border-color: #FFB6C1; /* Slightly darker pink */
-// $font-family: 'Comic Sans MS', cursive, sans-serif;
-
-// /* General Styles */
-// body {
-//   font-family: $font-family;
-//   background-color: $background-color;
-//   margin: 0;
-//   padding: 0;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   height: 100vh;
-// }
-
-// /* Header */
-// .header {
-//   text-align: center;
-//   margin-bottom: 20px;
-
-//   &__title {
-//     font-size: 2.5rem;
-//     color: $card-border-color;
-//     margin: 0;
-//   }
-// }
-
-// /* Restaurants Section */
-// .restaurants {
-//   display: flex;
-//   gap: 20px; /* Space between cards */
-//   align-items: flex-start;
-//   justify-content: center;
-// }
-
-// /* Card Styles */
-// article {
-//   background-color: $card-default-color;
-//   border: 2px solid $card-border-color;
-//   border-radius: 15px;
-//   width: 300px; /* Fixed width for consistency */
-//   height: 400px; /* Fixed height for consistency */
-//   text-align: center;
-//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//   transition: transform 0.3s, background-color 0.3s;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between; /* Ensure spacing between elements */
-//   padding: 20px;
-//   overflow: hidden; /* Prevent content from overflowing the card */
-
-//   /* Image inside the card */
-//   img {
-//     width: 100%; /* Always take the full width of the card */
-//     height: 200px; /* Fixed height for uniform image size */
-//     border-radius: 10px;
-//     object-fit: cover; /* Maintain aspect ratio while filling the container */
-//     object-position: center; /* Center the image inside the container */
-//   }
-
-//   h2,
-//   p {
-//     margin: 5px 0;
-//   }
-
-//   /* Hover effect: Turn light purple */
-//   &:hover {
-//     background-color: $card-hover-color;
-//     cursor: pointer;
-//   }
-
-//   /* Click effect: Expand, turn blue, then reset to pink */
-//   &.clicked {
-//     animation: clickEffect 0.5s ease-in-out;
-//     animation-fill-mode: forwards; /* Retain the final state after animation */
-//   }
-// }
-
-// /* Click animation */
-// @keyframes clickEffect {
-//   0% {
-//     transform: scale(1); /* Default size */
-//     background-color: $card-default-color; /* Light pink */
-//   }
-//   50% {
-//     transform: scale(1.1); /* Slight expansion */
-//     background-color: $card-click-color; /* Light blue */
-//   }
-//   100% {
-//     transform: scale(1); /* Reset size */
-//     background-color: $card-default-color; /* Back to light pink */
-//   }
-// }
-
-// /* Variables for colors */
-// $background-color: #FFF7E8; /* Pastel cream */
-// $card-default-color: #FFDEE9; /* Light pink */
-// $card-hover-color: #D6A4FF; /* Light purple */
-// $card-click-color: #AEC6CF; /* Light blue for click */
-// $card-border-color: #FFB6C1; /* Slightly darker pink */
-// $font-family: 'Comic Sans MS', cursive, sans-serif;
-
-// /* General Styles */
-// body {
-//   font-family: $font-family;
-//   background-color: $background-color;
-//   margin: 0;
-//   padding: 0;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   height: 100vh;
-// }
-
-// /* Header */
-// .header {
-//   text-align: center;
-//   margin-bottom: 20px;
-
-//   &__title {
-//     font-size: 2.5rem;
-//     color: $card-border-color;
-//     margin: 0;
-//   }
-// }
-
-// /* Restaurants Section */
-// .restaurants {
-//   display: flex;
-//   gap: 20px; /* Space between cards */
-//   align-items: flex-start;
-//   justify-content: center;
-//   flex-wrap: wrap; /* Allow wrapping on smaller screens */
-// }
-
-// /* Card Styles */
-// article {
-//   background-color: $card-default-color;
-//   border: 2px solid $card-border-color;
-//   border-radius: 15px;
-//   width: 300px; /* Fixed width */
-//   height: 400px; /* Fixed height */
-//   text-align: center;
-//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//   transition: transform 0.3s, background-color 0.3s;
-//   display: flex;
-//   flex-direction: column;
-//   overflow: hidden;
-
-//   /* Ensure all content is inside fixed areas */
-//   .image-container {
-//     width: 100%;
-//     height: 200px; /* Fixed height for uniform size */
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     overflow: hidden; /* Crop oversized images */
-
-//     img {
-//       width: 100%; /* Always fit the width */
-//       height: 100%; /* Stretch to fill height */
-//       object-fit: cover; /* Scale and crop to maintain aspect ratio */
-//     }
-//   }
-
-//   .content {
-//     flex-grow: 1;
-//     padding: 10px;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-evenly; /* Distribute content evenly */
-//     align-items: center;
-//     text-align: center;
-//     overflow: hidden; /* Prevent overflow if text is too long */
-
-//     h2 {
-//       font-size: 1.2rem;
-//       margin: 5px 0;
-//       text-overflow: ellipsis; /* Handle long names */
-//       white-space: nowrap;
-//       overflow: hidden;
-//     }
-
-//     p {
-//       font-size: 0.9rem;
-//       margin: 5px 0;
-//       text-overflow: ellipsis; /* Handle long text */
-//       white-space: nowrap;
-//       overflow: hidden;
-//     }
-//   }
-
-//   /* Hover effect: Turn light purple */
-//   &:hover {
-//     background-color: $card-hover-color;
-//     cursor: pointer;
-//   }
-
-//   /* Click effect: Expand, turn blue, then reset */
-//   &.clicked {
-//     animation: clickEffect 0.5s ease-in-out;
-//     animation-fill-mode: forwards;
-//   }
-// }
-
-// /* Click animation */
-// @keyframes clickEffect {
-//   0% {
-//     transform: scale(1);
-//     background-color: $card-default-color;
-//   }
-//   50% {
-//     transform: scale(1.1);
-//     background-color: $card-click-color;
-//   }
-//   100% {
-//     transform: scale(1);
-//     background-color: $card-default-color;
-//   }
-// }
-
-// /* Responsive Media Queries */
-// @media (max-width: 768px) { /* Tablet view */
-//   .restaurants {
-//     gap: 15px;
-//   }
-
-//   article {
-//     width: 260px;
-//     height: 360px;
-//   }
-
-//   .image-container {
-//     height: 180px;
-//   }
-
-//   h2 {
-//     font-size: 1rem;
-//   }
-
-//   p {
-//     font-size: 0.8rem;
-//   }
-// }
-
-// @media (max-width: 480px) { /* Mobile view */
-//   .restaurants {
-//     gap: 10px;
-//   }
-
-//   article {
-//     width: 100%; /* Full width for mobile */
-//     max-width: 300px; /* Max width remains consistent */
-//     height: 340px;
-//   }
-
-//   .image-container {
-//     height: 160px;
-//   }
-
-//   h2 {
-//     font-size: 0.9rem;
-//   }
-
-//   p {
-//     font-size: 0.8rem;
-//   }
-// }
 
 /* Variables for colors */
 $background-color: #FFF7E8; /* Pastel cream */
@@ -294,6 +19,11 @@ body {
   justify-content: center;
   height: 100vh;
 }
+
+
+
+
+
 
 /* Header */
 .header {
@@ -449,5 +179,51 @@ article {
 
   p {
     font-size: 0.8rem;
+  }
+}
+
+
+// body {
+//   margin: 0;
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: #000; // Black background
+//   overflow: hidden;
+
+//   &::before {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background: radial-gradient(circle, white 2%, transparent 3%) repeat;
+//     background-size: 50px 50px; // Star grid size
+//     animation: twinkle 2s infinite;
+//     opacity: 0.8;
+//   }
+
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background: radial-gradient(circle, white 2%, transparent 3%) repeat;
+//     background-size: 100px 100px; // Star grid size (different for depth effect)
+//     animation: twinkle 3s infinite;
+//     opacity: 0.5;
+//   }
+// }
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.3;
   }
 }

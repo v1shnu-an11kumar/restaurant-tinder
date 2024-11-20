@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  overflow: hidden;
+}
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, white 2%, transparent 3%) repeat;
+  background-size: 50px 50px;
+  animation: twinkle 2s infinite;
+  opacity: 0.8;
+}
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, white 2%, transparent 3%) repeat;
+  background-size: 100px 100px;
+  animation: twinkle 3s infinite;
+  opacity: 0.5;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}/*# sourceMappingURL=stars-bg.css.map */

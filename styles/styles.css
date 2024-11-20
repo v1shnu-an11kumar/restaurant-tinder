@@ -156,4 +156,12 @@ article.clicked {
   p {
     font-size: 0.8rem;
   }
+}
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }/*# sourceMappingURL=styles.css.map */
