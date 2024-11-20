@@ -1,4 +1,3 @@
-// DOM Elements
 const card1Content = document.querySelector('.restaurant__card--1 .card-content');
 const card2Content = document.querySelector('.restaurant__card--2 .card-content');
 const priceSlider = document.querySelector('#price-slider');
@@ -11,10 +10,8 @@ let displayedRestaurants = [];
 let filteredRestaurants = [];
 let selectedRestaurant = null;
 
-// Your current location
 const userLocation = { lat: 43.641920, lng: -79.397100 };
 
-// Initialize the Google Places API
 function initMap() {
     const map = new google.maps.Map(document.createElement('div'));
     const service = new google.maps.places.PlacesService(map);
@@ -38,7 +35,6 @@ function initMap() {
     );
 }
 
-// Fetch additional details for each restaurant
 async function fetchRestaurantDetails(service, results) {
     return Promise.all(
         results.map(
@@ -56,7 +52,6 @@ async function fetchRestaurantDetails(service, results) {
     );
 }
 
-// Display two restaurants
 function displayRestaurants() {
     if (filteredRestaurants.length < 2) return;
 
@@ -68,12 +63,10 @@ function displayRestaurants() {
     updateCard(card1Content, restaurant1, card1);
     updateCard(card2Content, restaurant2, card2);
 
-    // Add click handlers for card selection
     addCardClickHandler(card1, restaurant1, card2);
     addCardClickHandler(card2, restaurant2, card1);
 }
 
-// Get the next restaurant (avoid repeats)
 function getNextRestaurant() {
     for (let restaurant of filteredRestaurants) {
         if (!displayedRestaurants.includes(restaurant.place_id)) {
@@ -81,10 +74,9 @@ function getNextRestaurant() {
             return restaurant;
         }
     }
-    return null; // No more unique restaurants
+    return null;
 }
 
-// Update a card with restaurant details, hours, and user images
 function updateCard(cardContent, restaurant, card) {
     const distance = calculateDistance(
         userLocation.lat,
@@ -96,14 +88,13 @@ function updateCard(cardContent, restaurant, card) {
     const priceLevel = restaurant.price_level ? '$'.repeat(restaurant.price_level) : 'N/A';
     const websiteUrl = restaurant.website || '#';
 
-    // Shorten hours and format on a single line
     const openingHours = restaurant.opening_hours?.weekday_text
         ?.map((hour) =>
             hour
                 .replace(/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/g, (day) =>
                     day.charAt(0)
                 )
-                .replace(/,/g, '') // Remove any commas
+                .replace(/,/g, '')
         )
         .join(' | ') || 'Hours not available';
 
@@ -132,38 +123,33 @@ function updateCard(cardContent, restaurant, card) {
         }
     `;
 
-    card.classList.remove('clicked'); // Ensure previous selection is cleared
+    card.classList.remove('clicked');
 }
 
-// Add click event listener to restaurant cards
 function addCardClickHandler(card, restaurant, otherCard) {
     card.onclick = () => {
         console.log('Selected restaurant:', restaurant.name);
 
         selectedRestaurant = restaurant;
 
-        // Remove the `.clicked` class from all cards
         document.querySelectorAll('.restaurant__card--1, .restaurant__card--2').forEach((c) =>
             c.classList.remove('clicked')
         );
 
-        // Add the `.clicked` class to the selected card
         card.classList.add('clicked');
 
-        // Replace the unselected card with a new restaurant
         const newRestaurant = getNextRestaurant();
         if (newRestaurant) {
             const otherCardContent = otherCard.querySelector('.card-content');
             updateCard(otherCardContent, newRestaurant, otherCard);
-            addCardClickHandler(otherCard, newRestaurant, card); // Update click handler
+            addCardClickHandler(otherCard, newRestaurant, card);
         } else {
             otherCard.querySelector('.card-content').innerHTML = '<p>No more restaurants available.</p>';
-            otherCard.onclick = null; // Remove click event
+            otherCard.onclick = null;
         }
     };
 }
 
-// Filter restaurants based on price range slider
 priceSlider.addEventListener('input', () => {
     const selectedPrice = parseInt(priceSlider.value);
     priceLabel.textContent = selectedPrice === 4 ? 'All' : `$${'$'.repeat(selectedPrice)}`;
@@ -176,7 +162,6 @@ priceSlider.addEventListener('input', () => {
     displayRestaurants();
 });
 
-// Calculate the distance between two coordinates
 function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371;
     const dLat = degToRad(lat2 - lat1);
