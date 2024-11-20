@@ -111,25 +111,27 @@ article {
     transform: scale(1.05);
   }
 }
-
-/* Hours and Website */
 .hours-and-website {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.75rem; /* Smaller font for compact display */
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .hours {
   background-color: #FFF7E8;
-  border: 1px solid $card-border-color;
+  border: 1px solid #FFB6C1;
   border-radius: 5px;
-  padding: 5px;
-  font-size: 0.7rem; /* Small font for hours */
+  padding: 8px; 
+  font-size: 0.8rem; /* Reduce font size for fitting */
+  line-height: 1.2; /* Ensure tight but readable line spacing */
+  max-width: 60%; /* Prevent the hours box from stretching too wide */
+  overflow-y: auto; /* Allow vertical scrolling for long content */
   text-align: left;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  white-space: normal; /* Allow wrapping of text */
+  word-break: break-word; /* Handle long unbroken strings */
+  max-height: 60px; /* Constrain the height to avoid affecting the card size */
 }
 
 /* User Images Gallery */
@@ -238,4 +240,27 @@ body, html {
   display: flex;
   background-color: white;
   border-radius: 15%;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.rating-value {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.rating-reviews {
+  font-size: 0.875rem;
+  color: #666;
 }

@@ -100,24 +100,27 @@ article.clicked {
   transform: scale(1.05);
 }
 
-/* Hours and Website */
 .hours-and-website {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.75rem; /* Smaller font for compact display */
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .hours {
   background-color: #FFF7E8;
   border: 1px solid #FFB6C1;
   border-radius: 5px;
-  padding: 5px;
-  font-size: 0.7rem; /* Small font for hours */
+  padding: 8px;
+  font-size: 0.8rem; /* Reduce font size for fitting */
+  line-height: 1.2; /* Ensure tight but readable line spacing */
+  max-width: 60%; /* Prevent the hours box from stretching too wide */
+  overflow-y: auto; /* Allow vertical scrolling for long content */
   text-align: left;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  white-space: normal; /* Allow wrapping of text */
+  word-break: break-word; /* Handle long unbroken strings */
+  max-height: 60px; /* Constrain the height to avoid affecting the card size */
 }
 
 /* User Images Gallery */
@@ -190,104 +193,104 @@ body, html {
   animation: floatText 10s infinite linear;
 }
 #text span:nth-child(1) {
-  top: 24%;
-  left: 87%;
+  top: 40%;
+  left: 19%;
   animation-delay: 9s;
 }
 #text span:nth-child(2) {
-  top: 39%;
-  left: 40%;
-  animation-delay: 9s;
+  top: 83%;
+  left: 7%;
+  animation-delay: 5s;
 }
 #text span:nth-child(3) {
-  top: 51%;
-  left: 17%;
+  top: 75%;
+  left: 45%;
   animation-delay: 4s;
 }
 #text span:nth-child(4) {
-  top: 49%;
-  left: 49%;
-  animation-delay: 2s;
+  top: 65%;
+  left: 14%;
+  animation-delay: 10s;
 }
 #text span:nth-child(5) {
-  top: 95%;
-  left: 93%;
-  animation-delay: 10s;
+  top: 70%;
+  left: 8%;
+  animation-delay: 6s;
 }
 #text span:nth-child(6) {
-  top: 80%;
-  left: 96%;
-  animation-delay: 1s;
-}
-#text span:nth-child(7) {
-  top: 53%;
-  left: 60%;
+  top: 55%;
+  left: 27%;
   animation-delay: 10s;
 }
+#text span:nth-child(7) {
+  top: 91%;
+  left: 43%;
+  animation-delay: 7s;
+}
 #text span:nth-child(8) {
-  top: 29%;
-  left: 35%;
-  animation-delay: 2s;
+  top: 76%;
+  left: 1%;
+  animation-delay: 10s;
 }
 #text span:nth-child(9) {
-  top: 30%;
-  left: 89%;
+  top: 15%;
+  left: 15%;
   animation-delay: 5s;
 }
 #text span:nth-child(10) {
-  top: 49%;
-  left: 70%;
-  animation-delay: 7s;
+  top: 82%;
+  left: 79%;
+  animation-delay: 1s;
 }
 #text span:nth-child(11) {
-  top: 42%;
-  left: 73%;
-  animation-delay: 7s;
+  top: 72%;
+  left: 79%;
+  animation-delay: 1s;
 }
 #text span:nth-child(12) {
-  top: 97%;
-  left: 98%;
-  animation-delay: 10s;
+  top: 38%;
+  left: 78%;
+  animation-delay: 3s;
 }
 #text span:nth-child(13) {
-  top: 95%;
-  left: 48%;
-  animation-delay: 7s;
-}
-#text span:nth-child(14) {
-  top: 68%;
-  left: 12%;
+  top: 17%;
+  left: 37%;
   animation-delay: 10s;
 }
-#text span:nth-child(15) {
-  top: 40%;
-  left: 57%;
-  animation-delay: 6s;
-}
-#text span:nth-child(16) {
-  top: 88%;
-  left: 83%;
-  animation-delay: 6s;
-}
-#text span:nth-child(17) {
-  top: 70%;
-  left: 4%;
-  animation-delay: 4s;
-}
-#text span:nth-child(18) {
-  top: 38%;
-  left: 89%;
+#text span:nth-child(14) {
+  top: 69%;
+  left: 79%;
   animation-delay: 9s;
 }
+#text span:nth-child(15) {
+  top: 71%;
+  left: 5%;
+  animation-delay: 3s;
+}
+#text span:nth-child(16) {
+  top: 86%;
+  left: 61%;
+  animation-delay: 7s;
+}
+#text span:nth-child(17) {
+  top: 65%;
+  left: 32%;
+  animation-delay: 8s;
+}
+#text span:nth-child(18) {
+  top: 99%;
+  left: 35%;
+  animation-delay: 1s;
+}
 #text span:nth-child(19) {
-  top: 81%;
-  left: 57%;
+  top: 95%;
+  left: 68%;
   animation-delay: 9s;
 }
 #text span:nth-child(20) {
-  top: 63%;
-  left: 22%;
-  animation-delay: 5s;
+  top: 43%;
+  left: 48%;
+  animation-delay: 1s;
 }
 @keyframes floatText {
   0% {
@@ -313,4 +316,27 @@ body, html {
   display: flex;
   background-color: white;
   border-radius: 15%;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.rating-value {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.rating-reviews {
+  font-size: 0.875rem;
+  color: #666;
 }/*# sourceMappingURL=styles.css.map */
