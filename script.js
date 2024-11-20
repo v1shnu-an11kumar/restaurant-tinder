@@ -65,30 +65,34 @@ function displayRestaurants() {
 // Update a card with restaurant details
 function updateCard(card, restaurant) {
     const distance = calculateDistance(
-        userLocation.lat,
-        userLocation.lng,
-        restaurant.geometry.location.lat(),
-        restaurant.geometry.location.lng()
+      userLocation.lat,
+      userLocation.lng,
+      restaurant.geometry.location.lat(),
+      restaurant.geometry.location.lng()
     );
-
-    // Convert price level to dollar signs
+  
     const priceLevel = restaurant.price_level !== undefined
-        ? '$'.repeat(restaurant.price_level)
-        : 'N/A';
-
+      ? '$'.repeat(restaurant.price_level)
+      : 'N/A';
+  
     card.innerHTML = `
+      <div class="image-container">
+        ${
+          restaurant.photos && restaurant.photos.length > 0
+            ? `<img src="${restaurant.photos[0].getUrl()}" alt="${restaurant.name}" />`
+            : ''
+        }
+      </div>
+      <div class="content">
         <h2>${restaurant.name}</h2>
         <p>${restaurant.vicinity}</p>
         <p>Distance: ${distance.toFixed(2)} km</p>
         <p>Rating: ${restaurant.rating || 'N/A'} (${restaurant.user_ratings_total || 0} reviews)</p>
         <p>Price Level: ${priceLevel}</p>
-        ${
-            restaurant.photos && restaurant.photos.length > 0
-                ? `<img src="${restaurant.photos[0].getUrl()}" alt="${restaurant.name}" style="max-width: 100%; height: auto;">`
-                : ''
-        }
+      </div>
     `;
-}
+  }
+  
 
 // Handle restaurant selection
 function selectRestaurant(selected, selectedCard, otherCard) {

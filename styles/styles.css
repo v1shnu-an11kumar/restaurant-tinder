@@ -1,10 +1,8 @@
-/* Variables for colors */
 /* Pastel cream */
 /* Light pink */
 /* Light purple */
 /* Light blue for click */
 /* Slightly darker pink */
-/* General Styles */
 body {
   font-family: "Comic Sans MS", cursive, sans-serif;
   background-color: #FFF7E8;
@@ -17,7 +15,6 @@ body {
   height: 100vh;
 }
 
-/* Header */
 .header {
   text-align: center;
   margin-bottom: 20px;
@@ -28,36 +25,33 @@ body {
   margin: 0;
 }
 
-/* Restaurants Section */
 .restaurants {
   display: flex;
-  gap: 20px; /* Space between cards */
+  gap: 1.25rem;
   align-items: flex-start;
   justify-content: center;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-wrap: wrap;
 }
 
-/* Card Styles */
 article {
   background-color: #FFDEE9;
   border: 2px solid #FFB6C1;
   border-radius: 15px;
   width: 300px; /* Fixed width */
-  height: 450px; /* Increased height to accommodate larger images */
+  height: 450px; /* Fixed height */
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, background-color 0.3s;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse; /* Reverse the column order: image on bottom */
   overflow: hidden;
-  /* Image Container */
   /* Content Section */
   /* Hover effect: Turn light purple */
   /* Click effect: Expand, turn blue, then reset */
 }
 article .image-container {
   width: 100%;
-  height: 60%; /* Allocate 60% of card height for the image */
+  height: 40%; /* Keep image height fixed to 40% */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,7 +66,7 @@ article .image-container img {
      object-position: center; /* Center the image inside the container */
 }
 article .content {
-  flex-grow: 1;
+  height: 60%; /* Keep content height fixed to 60% */
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -82,9 +76,9 @@ article .content {
   overflow: hidden;
 }
 article .content h2 {
-  font-size: 1.2rem;
+  font-size: 1rem; /* Allows for smaller text sizes */
   margin: 5px 0;
-  text-overflow: ellipsis; /* Handle long names */
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -104,7 +98,7 @@ article.clicked {
   animation-fill-mode: forwards;
 }
 
-/* Click animation */
+/* Keyframe animations */
 @keyframes clickEffect {
   0% {
     transform: scale(1);
@@ -129,7 +123,10 @@ article.clicked {
     height: 400px;
   }
   .image-container {
-    height: 55%; /* Adjust image height proportionally */
+    height: 45%; /* Adjust image height proportionally */
+  }
+  .content {
+    height: 55%; /* Adjust content height proportionally */
   }
   h2 {
     font-size: 1rem;
@@ -149,6 +146,9 @@ article.clicked {
   }
   .image-container {
     height: 50%; /* Adjust image height proportionally */
+  }
+  .content {
+    height: 50%; /* Adjust content height proportionally */
   }
   h2 {
     font-size: 0.9rem;
