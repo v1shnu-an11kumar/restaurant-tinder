@@ -1,0 +1,159 @@
+/* Variables for colors */
+/* Pastel cream */
+/* Light pink */
+/* Light purple */
+/* Light blue for click */
+/* Slightly darker pink */
+/* General Styles */
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: #FFF7E8;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.header__title {
+  font-size: 2.5rem;
+  color: #FFB6C1;
+  margin: 0;
+}
+
+/* Restaurants Section */
+.restaurants {
+  display: flex;
+  gap: 20px; /* Space between cards */
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Card Styles */
+article {
+  background-color: #FFDEE9;
+  border: 2px solid #FFB6C1;
+  border-radius: 15px;
+  width: 300px; /* Fixed width */
+  height: 450px; /* Increased height to accommodate larger images */
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Image Container */
+  /* Content Section */
+  /* Hover effect: Turn light purple */
+  /* Click effect: Expand, turn blue, then reset */
+}
+article .image-container {
+  width: 100%;
+  height: 60%; /* Allocate 60% of card height for the image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+article .image-container img {
+  width: 100%; /* Always take full card width */
+  height: 100%; /* Stretch to fill height */
+  -o-object-fit: cover;
+     object-fit: cover; /* Scale and crop to maintain aspect ratio */
+  -o-object-position: center;
+     object-position: center; /* Center the image inside the container */
+}
+article .content {
+  flex-grow: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute content evenly */
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+article .content h2 {
+  font-size: 1.2rem;
+  margin: 5px 0;
+  text-overflow: ellipsis; /* Handle long names */
+  white-space: nowrap;
+  overflow: hidden;
+}
+article .content p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  text-overflow: ellipsis; /* Handle long text */
+  white-space: nowrap;
+  overflow: hidden;
+}
+article:hover {
+  background-color: #D6A4FF;
+  cursor: pointer;
+}
+article.clicked {
+  animation: clickEffect 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* Click animation */
+@keyframes clickEffect {
+  0% {
+    transform: scale(1);
+    background-color: #FFDEE9;
+  }
+  50% {
+    transform: scale(1.1);
+    background-color: #AEC6CF;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #FFDEE9;
+  }
+}
+/* Responsive Media Queries */
+@media (max-width: 768px) { /* Tablet view */
+  .restaurants {
+    gap: 15px;
+  }
+  article {
+    width: 260px;
+    height: 400px;
+  }
+  .image-container {
+    height: 55%; /* Adjust image height proportionally */
+  }
+  h2 {
+    font-size: 1rem;
+  }
+  p {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 480px) { /* Mobile view */
+  .restaurants {
+    gap: 10px;
+  }
+  article {
+    width: 100%; /* Full width for mobile */
+    max-width: 300px; /* Max width remains consistent */
+    height: 380px;
+  }
+  .image-container {
+    height: 50%; /* Adjust image height proportionally */
+  }
+  h2 {
+    font-size: 0.9rem;
+  }
+  p {
+    font-size: 0.8rem;
+  }
+}/*# sourceMappingURL=styles.css.map */
