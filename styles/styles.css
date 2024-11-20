@@ -1,3 +1,4 @@
+/* Variables for colors */
 /* General Styles */
 body {
   font-family: "Comic Sans MS", cursive, sans-serif;
@@ -25,9 +26,13 @@ body {
 .header .filters label {
   font-size: 1rem;
 }
-.header .filters select {
+.header .filters #price-slider {
   margin-left: 10px;
-  padding: 5px;
+  width: 150px;
+}
+.header .filters #price-label {
+  margin-left: 10px;
+  font-size: 1rem;
 }
 
 /* Restaurants Section */
@@ -44,29 +49,47 @@ article {
   border: 2px solid #FFB6C1;
   border-radius: 15px;
   width: 300px;
-  height: 500px;
+  height: auto;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, background-color 0.3s;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
 }
 article:hover {
   background-color: #D6A4FF;
+  cursor: pointer;
 }
 article.clicked {
   background-color: #AEC6CF !important;
   transform: scale(1.05);
 }
 
-.opening-hours {
-  font-size: 0.8rem;
-  list-style: none;
-  padding: 0;
-  margin: 10px 0;
+/* Hours and Website */
+.hours-and-website {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem; /* Smaller font for compact display */
+  margin-top: 10px;
 }
 
+.hours {
+  background-color: #FFF7E8;
+  border: 1px solid #FFB6C1;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.7rem; /* Small font for hours */
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* User Images Gallery */
 .user-images {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -77,4 +100,24 @@ article.clicked {
   height: 80px;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Animation */
+.footer__title {
+  font-size: 2rem;
+  margin-top: 20px;
+  animation: growShrink 2s infinite ease-in-out;
+}
+
+@keyframes growShrink {
+  0%, 100% {
+    transform: scale(1);
+    color: #D6A4FF;
+  }
+  50% {
+    transform: scale(1.2);
+    color: #AEC6CF;
+  }
 }/*# sourceMappingURL=styles.css.map */
