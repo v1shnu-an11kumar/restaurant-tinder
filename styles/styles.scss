@@ -1,9 +1,9 @@
 // /* Variables for colors */
-// $background-color: #FFF7E8; /* Pastel cream */
-// $card-default-color: #FFDEE9; /* Light pink */
-// $card-hover-color: #D6A4FF; /* Light purple */
-// $card-click-color: #AEC6CF; /* Light blue for click */
-// $card-border-color: #FFB6C1; /* Slightly darker pink */
+// $background-color: #FFF7E8;
+// $card-default-color: #FFDEE9;
+// $card-hover-color: #D6A4FF;
+// $card-click-color: #AEC6CF;
+// $card-border-color: #FFB6C1;
 // $font-family: 'Comic Sans MS', cursive, sans-serif;
 
 // /* General Styles */
@@ -19,25 +19,13 @@
 //   height: 100vh;
 // }
 
-// /* Header */
-// .header {
-//   text-align: center;
-//   margin-bottom: 20px;
-
-//   &__title {
-//     font-size: 2.5rem;
-//     color: $card-border-color;
-//     margin: 0;
-//   }
-// }
-
 // /* Restaurants Section */
 // .restaurants {
 //   display: flex;
-//   gap: 20px; /* Space between cards */
+//   gap: 20px;
 //   align-items: flex-start;
 //   justify-content: center;
-//   flex-wrap: wrap; /* Allow wrapping on smaller screens */
+//   flex-wrap: wrap;
 // }
 
 // /* Card Styles */
@@ -45,8 +33,8 @@
 //   background-color: $card-default-color;
 //   border: 2px solid $card-border-color;
 //   border-radius: 15px;
-//   width: 300px; /* Fixed width */
-//   height: 450px; /* Fixed height to ensure all cards are the same size */
+//   width: 300px;
+//   height: auto;
 //   text-align: center;
 //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 //   transition: transform 0.3s, background-color 0.3s;
@@ -56,159 +44,114 @@
 //   overflow: hidden;
 //   padding: 15px;
 
-//   /* Hover effect */
 //   &:hover {
 //     background-color: $card-hover-color;
 //     cursor: pointer;
 //   }
 
-//   /* Click effect */
 //   &.clicked {
-//     background-color: $card-click-color !important; /* Apply light blue on click */
-//     transform: scale(1.05); /* Slightly enlarge card on click */
+//     background-color: $card-click-color !important;
+//     transform: scale(1.05);
 //   }
 // }
 
 // /* Image Container */
 // .image-container {
 //   width: 100%;
-//   height: 150px; /* Fixed height for the image container */
+//   height: 150px;
 //   display: flex;
 //   align-items: center;
 //   justify-content: center;
 //   overflow: hidden;
-//   background-color: white; /* Optional: Background for empty space */
-//   border-radius: 8px;
+//   background-color: white;
 
 //   img {
-//     width: 100%; /* Ensure the image fills the width */
-//     height: 100%; /* Ensure the image fills the height */
-//     object-fit: cover; /* Maintain aspect ratio and cover the container */
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
 //   }
 // }
 
-// /* Content Section */
-// .content {
-//   flex-grow: 1;
-//   padding: 10px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   align-items: center;
-//   text-align: center;
+// /* Opening Hours */
+// .opening-hours {
+//   list-style: none;
+//   padding: 0;
+//   margin: 10px 0;
+//   font-size: 0.8rem;
+//   color: #333;
 
-//   h2 {
-//     font-size: 1.2rem;
-//     margin: 5px 0;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//     white-space: nowrap; /* Single-line text */
-//     font-weight: bold;
+//   li {
+//     text-align: left;
 //   }
+// }
 
-//   p {
-//     font-size: 0.9rem;
-//     margin: 5px 0;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//     display: -webkit-box;
-//     -webkit-line-clamp: 2; /* Limit to 2 lines */
-//     -webkit-box-orient: vertical;
-//     word-wrap: break-word; /* Ensure long words break nicely */
+// /* User Images Gallery */
+// .user-images {
+//   display: grid;
+//   grid-template-columns: repeat(2, 1fr);
+//   gap: 5px;
+//   margin-top: 10px;
+
+//   img {
+//     width: 100%;
+//     height: 70px;
+//     object-fit: cover;
+//     border-radius: 4px;
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 //   }
 // }
 
 // /* Button Style */
 // button.restaurant-link {
-//   margin-top: auto; /* Push the button to the bottom */
+//   margin-top: 10px;
 //   padding: 10px 20px;
 //   font-size: 0.9rem;
 //   color: white;
-//   background-color: #D6A4FF; /* Light purple */
+//   background-color: #D6A4FF;
 //   border: none;
 //   border-radius: 8px;
 //   cursor: pointer;
 //   transition: background-color 0.3s;
-//   display: block;
 
 //   &:hover {
-//     background-color: #AE87E6; /* Slightly darker purple */
+//     background-color: #AE87E6;
 //   }
 // }
-
-// /* Responsive Media Queries */
-// @media (max-width: 768px) { /* Tablet view */
-//   .restaurants {
-//     gap: 15px;
-//   }
-
-//   article {
-//     width: 260px;
-//     height: 400px; /* Adjust for smaller screens */
-//   }
-
-//   .image-container {
-//     height: 140px; /* Adjust image height */
-//   }
-
-//   h2 {
-//     font-size: 1rem;
-//   }
-
-//   p {
-//     font-size: 0.8rem;
-//   }
-// }
-
-// @media (max-width: 480px) { /* Mobile view */
-//   .restaurants {
-//     gap: 10px;
-//   }
-
-//   article {
-//     width: 100%; /* Full width for mobile */
-//     max-width: 300px; /* Consistent max width */
-//     height: 380px;
-//   }
-
-//   .image-container {
-//     height: 120px; /* Adjust image height */
-//   }
-
-//   h2 {
-//     font-size: 0.9rem;
-//   }
-
-//   p {
-//     font-size: 0.8rem;
-//   }
-// }
-
-// /* Clicked Style */
-// .clicked {
-//   background-color: $card-click-color !important; /* Light blue */
-//   transform: scale(1.05); /* Slightly enlarge the selected card */
-// }
-
-/* Variables for colors */
-$background-color: #FFF7E8;
-$card-default-color: #FFDEE9;
-$card-hover-color: #D6A4FF;
-$card-click-color: #AEC6CF;
-$card-border-color: #FFB6C1;
-$font-family: 'Comic Sans MS', cursive, sans-serif;
 
 /* General Styles */
 body {
-  font-family: $font-family;
-  background-color: $background-color;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #FFF7E8;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+
+  .instructions {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+
+  .filters {
+    margin: 20px 0;
+
+    label {
+      font-size: 1rem;
+    }
+
+    select {
+      margin-left: 10px;
+      padding: 5px;
+    }
+  }
 }
 
 /* Restaurants Section */
@@ -220,92 +163,44 @@ body {
   flex-wrap: wrap;
 }
 
-/* Card Styles */
 article {
-  background-color: $card-default-color;
-  border: 2px solid $card-border-color;
+  background-color: #FFDEE9;
+  border: 2px solid #FFB6C1;
   border-radius: 15px;
   width: 300px;
-  height: auto;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, background-color 0.3s;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
   padding: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: $card-hover-color;
-    cursor: pointer;
+    background-color: #D6A4FF;
   }
 
   &.clicked {
-    background-color: $card-click-color !important;
+    background-color: #AEC6CF !important;
     transform: scale(1.05);
   }
 }
 
-/* Image Container */
-.image-container {
-  width: 100%;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: white;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-/* Opening Hours */
 .opening-hours {
+  font-size: 0.8rem;
   list-style: none;
   padding: 0;
   margin: 10px 0;
-  font-size: 0.8rem;
-  color: #333;
-
-  li {
-    text-align: left;
-  }
 }
 
-/* User Images Gallery */
 .user-images {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5px;
-  margin-top: 10px;
 
   img {
     width: 100%;
-    height: 70px;
+    height: 80px;
     object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-}
-
-/* Button Style */
-button.restaurant-link {
-  margin-top: 10px;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  color: white;
-  background-color: #D6A4FF;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #AE87E6;
   }
 }

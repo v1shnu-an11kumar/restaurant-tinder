@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,5 +34,51 @@
   </main>
 
 
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3it214r98klWMs7Gg28gxIxgUr9AHT8c&libraries=places"
+      async
+      defer></script>
+    <script src="script.js" type="module"></script>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Dinner Tinder</title>
+</head>
+<body>
+  <main>
+    <header class="header">
+      <h1 class="header__title">Dinner Tinder</h1>
+      <h2 class="instructions">Pick a restaurant you like and compare to nearby restaurants until you settle on where to go for dinner!</h2>
+      <div class="filters">
+        <label for="price-range">Filter by price range:</label>
+        <select id="price-range">
+          <option value="all">All</option>
+          <option value="1">$</option>
+          <option value="2">$$</option>
+          <option value="3">$$$</option>
+          <option value="4">$$$$</option>
+        </select>
+      </div>
+    </header>
+    <section class="restaurants">
+      <article class="restaurant__card--1">
+        <div class="card-content"></div>
+        <button class="restaurant-link--1" hidden>Visit Website</button>
+      </article>
+      <article class="restaurant__card--2">
+        <div class="card-content"></div>
+        <button class="restaurant-link--2" hidden>Visit Website</button>
+      </article>
+    </section>
+    <footer>
+      <h2 class="footer__title">Bon Appetit!</h2>
+    </footer>
+  </main>
 </body>
 </html>

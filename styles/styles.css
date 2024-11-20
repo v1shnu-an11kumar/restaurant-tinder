@@ -1,4 +1,3 @@
-/* Variables for colors */
 /* General Styles */
 body {
   font-family: "Comic Sans MS", cursive, sans-serif;
@@ -9,7 +8,26 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.header .instructions {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+.header .filters {
+  margin: 20px 0;
+}
+.header .filters label {
+  font-size: 1rem;
+}
+.header .filters select {
+  margin-left: 10px;
+  padding: 5px;
 }
 
 /* Restaurants Section */
@@ -21,88 +39,42 @@ body {
   flex-wrap: wrap;
 }
 
-/* Card Styles */
 article {
   background-color: #FFDEE9;
   border: 2px solid #FFB6C1;
   border-radius: 15px;
   width: 300px;
-  height: auto;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, background-color 0.3s;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
   padding: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 article:hover {
   background-color: #D6A4FF;
-  cursor: pointer;
 }
 article.clicked {
   background-color: #AEC6CF !important;
   transform: scale(1.05);
 }
 
-/* Image Container */
-.image-container {
-  width: 100%;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: white;
-}
-.image-container img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-/* Opening Hours */
 .opening-hours {
+  font-size: 0.8rem;
   list-style: none;
   padding: 0;
   margin: 10px 0;
-  font-size: 0.8rem;
-  color: #333;
-}
-.opening-hours li {
-  text-align: left;
 }
 
-/* User Images Gallery */
 .user-images {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5px;
-  margin-top: 10px;
 }
 .user-images img {
   width: 100%;
-  height: 70px;
+  height: 80px;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Button Style */
-button.restaurant-link {
-  margin-top: 10px;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  color: white;
-  background-color: #D6A4FF;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-button.restaurant-link:hover {
-  background-color: #AE87E6;
 }/*# sourceMappingURL=styles.css.map */

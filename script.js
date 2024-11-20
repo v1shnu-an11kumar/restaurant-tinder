@@ -81,6 +81,7 @@
 //     }
 //     return null; // No more unique restaurants
 // }
+
 // // Update a card with restaurant details, hours, and user images
 // function updateCard(cardContent, button, restaurant) {
 //     const distance = calculateDistance(
@@ -132,40 +133,6 @@
 //         window.open(websiteUrl, '_blank');
 //     };
 // }
-// // // Update a card with restaurant details and link button
-// // function updateCard(cardContent, button, restaurant) {
-// //     const distance = calculateDistance(
-// //         userLocation.lat,
-// //         userLocation.lng,
-// //         restaurant.geometry.location.lat(),
-// //         restaurant.geometry.location.lng()
-// //     );
-
-// //     const priceLevel = restaurant.price_level ? '$'.repeat(restaurant.price_level) : 'N/A';
-// //     const websiteUrl = restaurant.website || '#';
-
-// //     // Update card content
-// //     cardContent.innerHTML = `
-// //         <h2>${restaurant.name}</h2>
-// //         <p>${restaurant.vicinity}</p>
-// //         <p>Distance: ${distance.toFixed(2)} km</p>
-// //         <p>Rating: ${restaurant.rating || 'N/A'} (${restaurant.user_ratings_total || 0} reviews)</p>
-// //         <p>Price Level: ${priceLevel}</p>
-// //         ${
-// //             restaurant.photos?.length
-// //                 ? `<img src="${restaurant.photos[0].getUrl()}" alt="${restaurant.name}" style="max-width: 100%; height: auto;">`
-// //                 : ''
-// //         }
-// //     `;
-
-// //     // Update and show the button
-// //     button.hidden = false;
-// //     button.textContent = 'Visit Website';
-// //     button.onclick = (event) => {
-// //         event.stopPropagation(); // Prevent card click handler from firing
-// //         window.open(websiteUrl, '_blank');
-// //     };
-// // }
 
 // // Handle restaurant selection
 // function selectRestaurant(selected, selectedCard, otherCard) {
@@ -227,9 +194,11 @@ const button1 = document.querySelector('.restaurant-link--1');
 const button2 = document.querySelector('.restaurant-link--2');
 const card1 = document.querySelector('.restaurant__card--1');
 const card2 = document.querySelector('.restaurant__card--2');
+const priceFilter = document.querySelector('#price-range');
 
 let restaurants = [];
 let displayedRestaurants = [];
+let filteredRestaurants = [];
 let selectedRestaurant = null;
 
 // Your current location
@@ -250,6 +219,7 @@ function initMap() {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 restaurants = await fetchRestaurantDetails(service, results);
                 restaurants.sort((a, b) => (b.user_ratings_total || 0) - (a.user_ratings_total || 0));
+                filteredRestaurants = [...restaurants];
                 displayRestaurants();
             } else {
                 console.error('Error fetching restaurants:', status);
@@ -278,7 +248,7 @@ async function fetchRestaurantDetails(service, results) {
 
 // Display two restaurants
 function displayRestaurants() {
-    if (restaurants.length < 2) return;
+    if (filteredRestaurants.length < 2) return;
 
     const restaurant1 = getNextRestaurant();
     const restaurant2 = getNextRestaurant();
@@ -295,7 +265,7 @@ function displayRestaurants() {
 
 // Get the next restaurant (avoid repeats)
 function getNextRestaurant() {
-    for (let restaurant of restaurants) {
+    for (let restaurant of filteredRestaurants) {
         if (!displayedRestaurants.includes(restaurant.place_id)) {
             displayedRestaurants.push(restaurant.place_id);
             return restaurant;
@@ -315,12 +285,16 @@ function updateCard(cardContent, button, restaurant) {
 
     const priceLevel = restaurant.price_level ? '$'.repeat(restaurant.price_level) : 'N/A';
     const websiteUrl = restaurant.website || '#';
-    const openingHours = restaurant.opening_hours?.weekday_text || []; // Hours of operation
 
-    // Limit to 4 user photos
+    // Convert hours to a shorter format (e.g., M 11 AM - 1 PM)
+    const openingHours = restaurant.opening_hours?.weekday_text?.map((hour) =>
+        hour.replace(/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/g, (day) =>
+            day.charAt(0)
+        )
+    ) || [];
+
     const userPhotos = restaurant.photos?.slice(0, 4) || [];
 
-    // Update card content
     cardContent.innerHTML = `
         <h2>${restaurant.name}</h2>
         <p>${restaurant.vicinity}</p>
@@ -335,7 +309,7 @@ function updateCard(cardContent, button, restaurant) {
                 : '<p>Hours: Not available</p>'
         }
         ${
-            restaurant.photos?.length
+            userPhotos.length > 0
                 ? `<div class="user-images">
                     ${userPhotos
                         .map(
@@ -347,11 +321,10 @@ function updateCard(cardContent, button, restaurant) {
         }
     `;
 
-    // Update and show the button
     button.hidden = false;
     button.textContent = 'Visit Website';
     button.onclick = (event) => {
-        event.stopPropagation(); // Prevent card click handler from firing
+        event.stopPropagation();
         window.open(websiteUrl, '_blank');
     };
 }
@@ -360,35 +333,47 @@ function updateCard(cardContent, button, restaurant) {
 function selectRestaurant(selected, selectedCard, otherCard) {
     console.log('Selected restaurant:', selected.name);
 
-    selectedRestaurant = selected; // Store the selected restaurant
+    selectedRestaurant = selected;
 
-    // Remove the `.clicked` class from all cards
     document.querySelectorAll('.restaurant__card--1, .restaurant__card--2').forEach((card) => {
         card.classList.remove('clicked');
     });
 
-    // Add the `.clicked` class to the selected card
     selectedCard.classList.add('clicked');
 
-    // Replace the unselected card with a new restaurant
     const newRestaurant = getNextRestaurant();
     if (newRestaurant) {
         const otherCardContent = otherCard.querySelector('.card-content');
         const otherButton = otherCard.querySelector('button');
         updateCard(otherCardContent, otherButton, newRestaurant);
 
-        // Update click handler for the replaced card
         otherCard.onclick = () => selectRestaurant(newRestaurant, otherCard, selectedCard);
     } else {
         otherCard.querySelector('.card-content').innerHTML = '<p>No more restaurants available.</p>';
         otherCard.querySelector('button').hidden = true;
-        otherCard.onclick = null; // Remove the click event
+        otherCard.onclick = null;
     }
 }
 
+// Filter restaurants based on selected price range
+priceFilter.addEventListener('change', () => {
+    const selectedPrice = priceFilter.value;
+
+    if (selectedPrice === 'all') {
+        filteredRestaurants = [...restaurants];
+    } else {
+        filteredRestaurants = restaurants.filter(
+            (restaurant) => restaurant.price_level === parseInt(selectedPrice)
+        );
+    }
+
+    displayedRestaurants = [];
+    displayRestaurants();
+});
+
 // Calculate the distance between two coordinates
 function calculateDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371; // Radius of the Earth in kilometers
+    const R = 6371;
     const dLat = degToRad(lat2 - lat1);
     const dLon = degToRad(lon2 - lon1);
 
@@ -401,10 +386,8 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
-// Convert degrees to radians
 function degToRad(deg) {
     return deg * (Math.PI / 180);
 }
 
-// Initialize the app
 initMap();
