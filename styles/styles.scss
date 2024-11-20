@@ -41,111 +41,98 @@
 // }
 
 // /* Card Styles */
-// // article {
-// //   background-color: $card-default-color;
-// //   border: 2px solid $card-border-color;
-// //   border-radius: 15px;
-// //   width: 300px; /* Fixed width */
-// //   height: 450px; /* Increased height to accommodate larger images */
-// //   text-align: center;
-// //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-// //   transition: transform 0.3s, background-color 0.3s;
-// //   display: flex;
-// //   flex-direction: column;
-// //   overflow: hidden;
+// article {
+//   background-color: $card-default-color;
+//   border: 2px solid $card-border-color;
+//   border-radius: 15px;
+//   width: 300px; /* Fixed width */
+//   height: 450px; /* Fixed height to ensure all cards are the same size */
+//   text-align: center;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   transition: transform 0.3s, background-color 0.3s;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   overflow: hidden;
+//   padding: 15px;
 
-//   article {
-//     background-color: $card-default-color;
-//     border: 2px solid $card-border-color;
-//     border-radius: 15px;
-//     width: 300px;
-//     height: auto; /* Let the height adjust based on content */
-//     text-align: center;
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//     transition: transform 0.3s, background-color 0.3s;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between; /* Push button to the bottom */
-//     padding: 15px; /* Add padding around content */
-//   }
-
-//   /* Image Container */
-//   .image-container {
-//     width: 100%;
-//     height: 60%; /* Allocate 60% of card height for the image */
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     overflow: hidden;
-
-//     img {
-//       width: 100%; /* Always take full card width */
-//       height: 100%; /* Stretch to fill height */
-//       object-fit: cover; /* Scale and crop to maintain aspect ratio */
-//       object-position: center; /* Center the image inside the container */
-//     }
-//   }
-
-//   /* Content Section */
-//   .content {
-//     flex-grow: 1;
-//     padding: 10px;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between; /* Distribute content evenly */
-//     align-items: center;
-//     text-align: center;
-//     overflow: hidden;
-
-//     h2 {
-//       font-size: 1.2rem;
-//       margin: 5px 0;
-//       text-overflow: ellipsis; /* Handle long names */
-//       white-space: nowrap;
-//       overflow: hidden;
-//     }
-
-//     p {
-//       font-size: 0.9rem;
-//       margin: 5px 0;
-//       text-overflow: ellipsis; /* Handle long text */
-//       white-space: nowrap;
-//       overflow: hidden;
-//     }
-//   }
-
-//   /* Hover effect: Turn light purple */
+//   /* Hover effect */
 //   &:hover {
 //     background-color: $card-hover-color;
 //     cursor: pointer;
 //   }
 
-//   /* Click effect: Expand, turn blue, then reset */
+//   /* Click effect */
 //   &.clicked {
-//     animation: clickEffect 0.5s ease-in-out;
-//     animation-fill-mode: forwards;
+//     background-color: $card-click-color !important; /* Apply light blue on click */
+//     transform: scale(1.05); /* Slightly enlarge card on click */
+//   }
+// }
+
+// /* Image Container */
+// .image-container {
+//   width: 100%;
+//   height: 150px; /* Fixed height for the image container */
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   overflow: hidden;
+//   background-color: white; /* Optional: Background for empty space */
+//   border-radius: 8px;
+
+//   img {
+//     width: 100%; /* Ensure the image fills the width */
+//     height: 100%; /* Ensure the image fills the height */
+//     object-fit: cover; /* Maintain aspect ratio and cover the container */
+//   }
+// }
+
+// /* Content Section */
+// .content {
+//   flex-grow: 1;
+//   padding: 10px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   align-items: center;
+//   text-align: center;
+
+//   h2 {
+//     font-size: 1.2rem;
+//     margin: 5px 0;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     white-space: nowrap; /* Single-line text */
+//     font-weight: bold;
 //   }
 
-//   article img {
-//     max-width: 100%;
-//     height: auto;
-//     margin-bottom: 1rem; /* Space below the image */
-//     border-radius: 8px; /* Optional: Rounded edges for a polished look */
+//   p {
+//     font-size: 0.9rem;
+//     margin: 5px 0;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     display: -webkit-box;
+//     -webkit-line-clamp: 2; /* Limit to 2 lines */
+//     -webkit-box-orient: vertical;
+//     word-wrap: break-word; /* Ensure long words break nicely */
 //   }
+// }
 
-// /* Click animation */
-// @keyframes clickEffect {
-//   0% {
-//     transform: scale(1);
-//     background-color: $card-default-color;
-//   }
-//   50% {
-//     transform: scale(1.1);
-//     background-color: $card-click-color;
-//   }
-//   100% {
-//     transform: scale(1);
-//     background-color: $card-default-color;
+// /* Button Style */
+// button.restaurant-link {
+//   margin-top: auto; /* Push the button to the bottom */
+//   padding: 10px 20px;
+//   font-size: 0.9rem;
+//   color: white;
+//   background-color: #D6A4FF; /* Light purple */
+//   border: none;
+//   border-radius: 8px;
+//   cursor: pointer;
+//   transition: background-color 0.3s;
+//   display: block;
+
+//   &:hover {
+//     background-color: #AE87E6; /* Slightly darker purple */
 //   }
 // }
 
@@ -157,11 +144,11 @@
 
 //   article {
 //     width: 260px;
-//     height: 400px;
+//     height: 400px; /* Adjust for smaller screens */
 //   }
 
 //   .image-container {
-//     height: 55%; /* Adjust image height proportionally */
+//     height: 140px; /* Adjust image height */
 //   }
 
 //   h2 {
@@ -180,12 +167,12 @@
 
 //   article {
 //     width: 100%; /* Full width for mobile */
-//     max-width: 300px; /* Max width remains consistent */
+//     max-width: 300px; /* Consistent max width */
 //     height: 380px;
 //   }
 
 //   .image-container {
-//     height: 50%; /* Adjust image height proportionally */
+//     height: 120px; /* Adjust image height */
 //   }
 
 //   h2 {
@@ -197,45 +184,18 @@
 //   }
 // }
 
-// // button.restaurant-link {
-// //   margin-top: 10px;
-// //   padding: 10px 20px;
-// //   font-size: 0.9rem;
-// //   color: white;
-// //   background-color: #D6A4FF; /* Light purple */
-// //   border: none;
-// //   border-radius: 8px;
-// //   cursor: pointer;
-// //   transition: background-color 0.3s;
-
-// //   &:hover {
-// //     background-color: #AE87E6; /* Slightly darker purple */
-// //   }
-// // }
-
-// button.restaurant-link {
-//   margin-top: 5rem; /* Ensures the button is at least 1rem below the card content */
-//   padding: 10px 20px;
-//   font-size: 0.9rem;
-//   color: white;
-//   background-color: #D6A4FF; /* Light purple */
-//   border: none;
-//   border-radius: 8px;
-//   cursor: pointer;
-//   transition: background-color 0.3s;
-//   display: block; /* Ensures the button spans its container width */
-
-//   &:hover {
-//     background-color: #AE87E6; /* Slightly darker purple */
-//   }
+// /* Clicked Style */
+// .clicked {
+//   background-color: $card-click-color !important; /* Light blue */
+//   transform: scale(1.05); /* Slightly enlarge the selected card */
 // }
 
 /* Variables for colors */
-$background-color: #FFF7E8; /* Pastel cream */
-$card-default-color: #FFDEE9; /* Light pink */
-$card-hover-color: #D6A4FF; /* Light purple */
-$card-click-color: #AEC6CF; /* Light blue for click */
-$card-border-color: #FFB6C1; /* Slightly darker pink */
+$background-color: #FFF7E8;
+$card-default-color: #FFDEE9;
+$card-hover-color: #D6A4FF;
+$card-click-color: #AEC6CF;
+$card-border-color: #FFB6C1;
 $font-family: 'Comic Sans MS', cursive, sans-serif;
 
 /* General Styles */
@@ -251,25 +211,13 @@ body {
   height: 100vh;
 }
 
-/* Header */
-.header {
-  text-align: center;
-  margin-bottom: 20px;
-
-  &__title {
-    font-size: 2.5rem;
-    color: $card-border-color;
-    margin: 0;
-  }
-}
-
 /* Restaurants Section */
 .restaurants {
   display: flex;
-  gap: 20px; /* Space between cards */
+  gap: 20px;
   align-items: flex-start;
   justify-content: center;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-wrap: wrap;
 }
 
 /* Card Styles */
@@ -277,8 +225,8 @@ article {
   background-color: $card-default-color;
   border: 2px solid $card-border-color;
   border-radius: 15px;
-  width: 300px; /* Fixed width */
-  height: 450px; /* Fixed height to ensure all cards are the same size */
+  width: 300px;
+  height: auto;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, background-color 0.3s;
@@ -286,133 +234,78 @@ article {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  padding: 15px; /* Padding around content */
+  padding: 15px;
 
-  /* Hover effect */
   &:hover {
     background-color: $card-hover-color;
     cursor: pointer;
   }
 
-  /* Click effect */
   &.clicked {
-    background-color: $card-click-color !important; /* Apply light blue on click */
-    transform: scale(1.05); /* Slightly enlarge card on click */
+    background-color: $card-click-color !important;
+    transform: scale(1.05);
   }
 }
 
 /* Image Container */
 .image-container {
   width: 100%;
-  height: 200px; /* Fixed height for image container */
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: 8px; /* Optional: Rounded edges for a polished look */
-  background-color: white; /* Optional: Background for empty space */
+  background-color: white;
 
   img {
-    max-width: 100%; /* Scale image proportionally */
-    max-height: 100%; /* Scale image proportionally */
-    object-fit: cover; /* Fill container while maintaining aspect ratio */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
-/* Content Section */
-.content {
-  flex-grow: 1;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
+/* Opening Hours */
+.opening-hours {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  font-size: 0.8rem;
+  color: #333;
 
-  h2 {
-    font-size: 1.2rem;
-    margin: 5px 0;
-    text-overflow: ellipsis; /* Handle long names */
-    white-space: nowrap;
-    overflow: hidden;
+  li {
+    text-align: left;
   }
+}
 
-  p {
-    font-size: 0.9rem;
-    margin: 5px 0;
-    text-overflow: ellipsis; /* Handle long text */
-    white-space: nowrap;
-    overflow: hidden;
+/* User Images Gallery */
+.user-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+
+  img {
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 }
 
 /* Button Style */
 button.restaurant-link {
-  margin-top: 1rem; /* Space between card content and button */
+  margin-top: 10px;
   padding: 10px 20px;
   font-size: 0.9rem;
   color: white;
-  background-color: #D6A4FF; /* Light purple */
+  background-color: #D6A4FF;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
-  display: block;
 
   &:hover {
-    background-color: #AE87E6; /* Slightly darker purple */
+    background-color: #AE87E6;
   }
-}
-
-/* Responsive Media Queries */
-@media (max-width: 768px) { /* Tablet view */
-  .restaurants {
-    gap: 15px;
-  }
-
-  article {
-    width: 260px;
-    height: 400px; /* Maintain consistent aspect ratio */
-  }
-
-  .image-container {
-    height: 180px; /* Adjust image height */
-  }
-
-  h2 {
-    font-size: 1rem;
-  }
-
-  p {
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 480px) { /* Mobile view */
-  .restaurants {
-    gap: 10px;
-  }
-
-  article {
-    width: 100%; /* Full width for mobile */
-    max-width: 300px; /* Max width remains consistent */
-    height: 380px;
-  }
-
-  .image-container {
-    height: 160px; /* Adjust image height */
-  }
-
-  h2 {
-    font-size: 0.9rem;
-  }
-
-  p {
-    font-size: 0.8rem;
-  }
-}
-
-.clicked {
-  background-color: $card-click-color !important; /* Light blue */
-  transform: scale(1.05); /* Slightly enlarge the selected card */
 }
