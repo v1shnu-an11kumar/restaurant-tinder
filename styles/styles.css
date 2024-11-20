@@ -43,82 +43,87 @@ article {
   border: 2px solid #FFB6C1;
   border-radius: 15px;
   width: 300px; /* Fixed width */
-  height: 450px; /* Increased height to accommodate larger images */
+  height: 450px; /* Fixed height to ensure all cards are the same size */
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, background-color 0.3s;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
-  /* Image Container */
-  /* Content Section */
-  /* Hover effect: Turn light purple */
-  /* Click effect: Expand, turn blue, then reset */
-}
-article .image-container {
-  width: 100%;
-  height: 60%; /* Allocate 60% of card height for the image */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-article .image-container img {
-  width: 100%; /* Always take full card width */
-  height: 100%; /* Stretch to fill height */
-  -o-object-fit: cover;
-     object-fit: cover; /* Scale and crop to maintain aspect ratio */
-  -o-object-position: center;
-     object-position: center; /* Center the image inside the container */
-}
-article .content {
-  flex-grow: 1;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Distribute content evenly */
-  align-items: center;
-  text-align: center;
-  overflow: hidden;
-}
-article .content h2 {
-  font-size: 1.2rem;
-  margin: 5px 0;
-  text-overflow: ellipsis; /* Handle long names */
-  white-space: nowrap;
-  overflow: hidden;
-}
-article .content p {
-  font-size: 0.9rem;
-  margin: 5px 0;
-  text-overflow: ellipsis; /* Handle long text */
-  white-space: nowrap;
-  overflow: hidden;
+  padding: 15px; /* Padding around content */
+  /* Hover effect */
+  /* Click effect */
 }
 article:hover {
   background-color: #D6A4FF;
   cursor: pointer;
 }
 article.clicked {
-  animation: clickEffect 0.5s ease-in-out;
-  animation-fill-mode: forwards;
+  background-color: #AEC6CF !important; /* Apply light blue on click */
+  transform: scale(1.05); /* Slightly enlarge card on click */
 }
 
-/* Click animation */
-@keyframes clickEffect {
-  0% {
-    transform: scale(1);
-    background-color: #FFDEE9;
-  }
-  50% {
-    transform: scale(1.1);
-    background-color: #AEC6CF;
-  }
-  100% {
-    transform: scale(1);
-    background-color: #FFDEE9;
-  }
+/* Image Container */
+.image-container {
+  width: 100%;
+  height: 200px; /* Fixed height for image container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px; /* Optional: Rounded edges for a polished look */
+  background-color: white; /* Optional: Background for empty space */
 }
+.image-container img {
+  max-width: 100%; /* Scale image proportionally */
+  max-height: 100%; /* Scale image proportionally */
+  -o-object-fit: cover;
+     object-fit: cover; /* Fill container while maintaining aspect ratio */
+}
+
+/* Content Section */
+.content {
+  flex-grow: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.content h2 {
+  font-size: 1.2rem;
+  margin: 5px 0;
+  text-overflow: ellipsis; /* Handle long names */
+  white-space: nowrap;
+  overflow: hidden;
+}
+.content p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  text-overflow: ellipsis; /* Handle long text */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Button Style */
+button.restaurant-link {
+  margin-top: 1rem; /* Space between card content and button */
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  color: white;
+  background-color: #D6A4FF; /* Light purple */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+}
+button.restaurant-link:hover {
+  background-color: #AE87E6; /* Slightly darker purple */
+}
+
 /* Responsive Media Queries */
 @media (max-width: 768px) { /* Tablet view */
   .restaurants {
@@ -126,10 +131,10 @@ article.clicked {
   }
   article {
     width: 260px;
-    height: 400px;
+    height: 400px; /* Maintain consistent aspect ratio */
   }
   .image-container {
-    height: 55%; /* Adjust image height proportionally */
+    height: 180px; /* Adjust image height */
   }
   h2 {
     font-size: 1rem;
@@ -148,7 +153,7 @@ article.clicked {
     height: 380px;
   }
   .image-container {
-    height: 50%; /* Adjust image height proportionally */
+    height: 160px; /* Adjust image height */
   }
   h2 {
     font-size: 0.9rem;
@@ -156,4 +161,8 @@ article.clicked {
   p {
     font-size: 0.8rem;
   }
+}
+.clicked {
+  background-color: #AEC6CF !important; /* Light blue */
+  transform: scale(1.05); /* Slightly enlarge the selected card */
 }/*# sourceMappingURL=styles.css.map */
