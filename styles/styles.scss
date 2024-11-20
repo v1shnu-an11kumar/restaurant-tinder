@@ -118,7 +118,6 @@ article {
   justify-content: space-between;
   align-items: center;
   font-size: 0.75rem; /* Smaller font for compact display */
-  margin-top: 10px;
 }
 
 .hours {
@@ -228,4 +227,15 @@ body, html {
       opacity: 1;
     }
   }
+}
+
+.card-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.info-container{
+  display: flex;
+  background-color: white;
+  border-radius: 15%;
 }

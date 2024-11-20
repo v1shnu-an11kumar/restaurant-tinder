@@ -77,6 +77,55 @@ function getNextRestaurant() {
     return null;
 }
 
+// function updateCard(cardContent, restaurant, card) {
+//     const distance = calculateDistance(
+//         userLocation.lat,
+//         userLocation.lng,
+//         restaurant.geometry.location.lat(),
+//         restaurant.geometry.location.lng()
+//     );
+
+//     const priceLevel = restaurant.price_level ? '$'.repeat(restaurant.price_level) : 'N/A';
+//     const websiteUrl = restaurant.website || '#';
+
+//     const openingHours = restaurant.opening_hours?.weekday_text
+//         ?.map((hour) =>
+//             hour
+//                 .replace(/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/g, (day) =>
+//                     day.charAt(0)
+//                 )
+//                 .replace(/,/g, '')
+//         )
+//         .join(' | ') || 'Hours not available';
+
+//     const userPhotos = restaurant.photos?.slice(0, 4) || [];
+
+//     cardContent.innerHTML = `
+//         <h2>${restaurant.name}</h2>
+//         <p>${restaurant.vicinity}</p>
+//         <p>Distance: ${distance.toFixed(2)} km</p>
+//         <p>${restaurant.rating || 'N/A'} (${restaurant.user_ratings_total || 0} reviews)</p>
+//         <p>Price Level: ${priceLevel}</p>
+//         <div class="hours-and-website">
+//           <p class="hours">${openingHours}</p>
+//           <button class="website-link" onclick="window.open('${websiteUrl}', '_blank')">Visit Website</button>
+//         </div>
+//         ${
+//             userPhotos.length > 0
+//                 ? `<div class="user-images">
+//                     ${userPhotos
+//                         .map(
+//                             (photo) => `<img src="${photo.getUrl()}" alt="${restaurant.name} user image" />`
+//                         )
+//                         .join('')}
+//                 </div>`
+//                 : ''
+//         }
+//     `;
+
+//     card.classList.remove('clicked');
+// }
+
 function updateCard(cardContent, restaurant, card) {
     const distance = calculateDistance(
         userLocation.lat,
@@ -100,16 +149,24 @@ function updateCard(cardContent, restaurant, card) {
 
     const userPhotos = restaurant.photos?.slice(0, 4) || [];
 
-    cardContent.innerHTML = `
-        <h2>${restaurant.name}</h2>
-        <p>${restaurant.vicinity}</p>
-        <p>Distance: ${distance.toFixed(2)} km</p>
-        <p>Rating: ${restaurant.rating || 'N/A'} (${restaurant.user_ratings_total || 0} reviews)</p>
-        <p>Price Level: ${priceLevel}</p>
-        <div class="hours-and-website">
-          <p class="hours">${openingHours}</p>
-          <button class="website-link" onclick="window.open('${websiteUrl}', '_blank')">Visit Website</button>
+    // Update the card structure
+    card.innerHTML = `
+        <h2>${restaurant.name}</h2> <!-- Title outside card-content -->
+        <div class="card-content">
+            <!-- Flex container for the main information -->
+            <div class="info-container">
+                <p>${restaurant.vicinity}</p>
+                <p>${distance.toFixed(2)} km away</p>
+                <p>${restaurant.rating || 'N/A'} (${restaurant.user_ratings_total || 0} reviews)</p>
+                <p>${priceLevel}</p>
+            </div>
         </div>
+        <!-- Hours and website outside of card-content -->
+        <div class="hours-and-website">
+            <p class="hours">${openingHours}</p>
+            <button class="website-link" onclick="window.open('${websiteUrl}', '_blank')">Visit Website</button>
+        </div>
+        <!-- Images outside of card-content -->
         ${
             userPhotos.length > 0
                 ? `<div class="user-images">
