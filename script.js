@@ -100,7 +100,6 @@ function updateCard(cardContent, restaurant, card) {
 
     const userPhotos = restaurant.photos?.slice(0, 4) || [];
 
-    // Update the card structure
     card.innerHTML = `
         <h2>${restaurant.name}</h2> <!-- Title outside card-content -->
         <div class="rating">
@@ -136,63 +135,6 @@ function updateCard(cardContent, restaurant, card) {
 
     card.classList.remove('clicked');
 }
-
-// function updateCard(cardContent, restaurant, card) {
-//     const distance = calculateDistance(
-//         userLocation.lat,
-//         userLocation.lng,
-//         restaurant.geometry.location.lat(),
-//         restaurant.geometry.location.lng()
-//     );
-
-//     const priceLevel = restaurant.price_level ? '$'.repeat(restaurant.price_level) : '🤷‍♀️';
-//     const websiteUrl = restaurant.website || '#';
-
-//     const openingHours = restaurant.opening_hours?.weekday_text
-//         ?.map((hour) =>
-//             hour
-//                 .replace(/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/g, (day) =>
-//                     day.charAt(0)
-//                 )
-//                 .replace(/,/g, '')
-//         )
-//         .join(' | ') || '🤷‍♀️';
-
-//     const userPhotos = restaurant.photos?.slice(0, 4) || [];
-
-//     // Update the card structure
-//     card.innerHTML = `
-//         <h2>${restaurant.name}</h2> <!-- Title outside card-content -->
-//         <div class="card-content">
-//             <!-- Flex container for the main information -->
-//             <div class="info-container">
-//                 <p>${restaurant.vicinity}</p>
-//                 <p>${distance.toFixed(2)} km away</p>
-//                 <p>${restaurant.rating || 'N/A'} (${restaurant.user_ratings_total || 0} reviews)</p>
-//                 <p>${priceLevel}</p>
-//             </div>
-//         </div>
-//         <!-- Hours and website outside of card-content -->
-//         <div class="hours-and-website">
-//             <p class="hours">${openingHours}</p>
-//             <button class="website-link" onclick="window.open('${websiteUrl}', '_blank')">Visit Website</button>
-//         </div>
-//         <!-- Images outside of card-content -->
-//         ${
-//             userPhotos.length > 0
-//                 ? `<div class="user-images">
-//                     ${userPhotos
-//                         .map(
-//                             (photo) => `<img src="${photo.getUrl()}" alt="${restaurant.name} user image" />`
-//                         )
-//                         .join('')}
-//                 </div>`
-//                 : ''
-//         }
-//     `;
-
-//     card.classList.remove('clicked');
-// }
 
 function addCardClickHandler(card, restaurant, otherCard) {
     card.onclick = () => {
@@ -258,7 +200,6 @@ canvas.height = window.innerHeight;
 
 let stars = [];
 
-// Star Object
 function createStar() {
     return {
         x: Math.random() * canvas.width,
@@ -269,12 +210,10 @@ function createStar() {
     };
 }
 
-// Create Initial Stars
 for (let i = 0; i < 100; i++) {
     stars.push(createStar());
 }
 
-// Draw and Animate Stars
 function animateStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     stars.forEach((star) => {
@@ -283,21 +222,17 @@ function animateStars() {
         ctx.fillStyle = star.color;
         ctx.fill();
 
-        // Move star downward
         star.y += star.speed;
 
-        // Reset star position when it moves off-screen
         if (star.y > canvas.height) {
             star.y = -star.radius;
             star.x = Math.random() * canvas.width;
         }
     });
 
-    // Loop animation
     requestAnimationFrame(animateStars);
 }
 
-// Handle Window Resize
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -307,5 +242,4 @@ window.addEventListener('resize', () => {
     }
 });
 
-// Start Animation
 animateStars();
