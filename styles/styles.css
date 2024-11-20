@@ -2,15 +2,46 @@
 /* General Styles */
 body {
   font-family: "Comic Sans MS", cursive, sans-serif;
-  background-color: #FFF7E8;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  animation: flashing-background 10s infinite;
 }
 
+@keyframes flashing-background {
+  0%, 100% {
+    background-color: #FFDEE9;
+  }
+  25% {
+    background-color: #D6A4FF;
+  }
+  50% {
+    background-color: #AEC6CF;
+  }
+  75% {
+    background-color: #FFF7E8;
+  }
+}
+/* Title Animation */
+.header-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #D6A4FF;
+  animation: text-glow 2s infinite;
+}
+
+@keyframes text-glow {
+  0%, 100% {
+    text-shadow: 0 0 5px #D6A4FF, 0 0 10px #D6A4FF;
+  }
+  50% {
+    text-shadow: 0 0 10px #AEC6CF, 0 0 20px #AEC6CF;
+  }
+}
 /* Header */
 .header {
   text-align: center;
