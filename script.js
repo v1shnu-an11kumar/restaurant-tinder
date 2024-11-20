@@ -19,7 +19,7 @@ function initMap() {
     service.nearbySearch(
         {
             location: userLocation,
-            radius: 10000,
+            radius: 20000,
             type: 'restaurant',
         },
         async (results, status) => {
@@ -181,3 +181,63 @@ function degToRad(deg) {
 }
 
 initMap();
+
+const canvas = document.getElementById('background');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars = [];
+
+// Star Object
+function createStar() {
+    return {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 3,
+        color: `hsl(${Math.random() * 360}, 100%, 80%)`,
+        speed: Math.random() * 1 + 0.5,
+    };
+}
+
+// Create Initial Stars
+for (let i = 0; i < 100; i++) {
+    stars.push(createStar());
+}
+
+// Draw and Animate Stars
+function animateStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach((star) => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = star.color;
+        ctx.fill();
+
+        // Move star downward
+        star.y += star.speed;
+
+        // Reset star position when it moves off-screen
+        if (star.y > canvas.height) {
+            star.y = -star.radius;
+            star.x = Math.random() * canvas.width;
+        }
+    });
+
+    // Loop animation
+    requestAnimationFrame(animateStars);
+}
+
+// Handle Window Resize
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    stars = [];
+    for (let i = 0; i < 100; i++) {
+        stars.push(createStar());
+    }
+});
+
+// Start Animation
+animateStars();
